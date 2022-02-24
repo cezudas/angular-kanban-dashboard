@@ -1,0 +1,28 @@
+{
+  "root": "apps/kanban-dashboard-e2e",
+  "sourceRoot": "apps/kanban-dashboard-e2e/src",
+  "projectType": "application",
+  "targets": {
+    "e2e": {
+      "executor": "@nrwl/cypress:cypress",
+      "options": {
+        "cypressConfig": "apps/kanban-dashboard-e2e/cypress.json",
+        "devServerTarget": "kanban-dashboard:serve:development"
+      },
+      "configurations": {
+        "production": {
+          "devServerTarget": "kanban-dashboard:serve:production"
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/kanban-dashboard-e2e/**/*.{js,ts}"]
+      }
+    }
+  },
+  "tags": [],
+  "implicitDependencies": ["kanban-dashboard"]
+}

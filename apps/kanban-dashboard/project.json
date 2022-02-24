@@ -1,0 +1,94 @@
+{
+  "projectType": "application",
+  "root": "apps/kanban-dashboard",
+  "sourceRoot": "apps/kanban-dashboard/src",
+  "prefix": "vantage",
+  "targets": {
+    "build": {
+      "executor": "@angular-devkit/build-angular:browser",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/apps/kanban-dashboard",
+        "index": "apps/kanban-dashboard/src/index.html",
+        "main": "apps/kanban-dashboard/src/main.ts",
+        "polyfills": "apps/kanban-dashboard/src/polyfills.ts",
+        "tsConfig": "apps/kanban-dashboard/tsconfig.app.json",
+        "inlineStyleLanguage": "scss",
+        "assets": [
+          "apps/kanban-dashboard/src/favicon.ico",
+          "apps/kanban-dashboard/src/assets"
+        ],
+        "styles": ["apps/kanban-dashboard/src/styles.scss"],
+        "scripts": []
+      },
+      "configurations": {
+        "production": {
+          "budgets": [
+            {
+              "type": "initial",
+              "maximumWarning": "500kb",
+              "maximumError": "1mb"
+            },
+            {
+              "type": "anyComponentStyle",
+              "maximumWarning": "2kb",
+              "maximumError": "4kb"
+            }
+          ],
+          "fileReplacements": [
+            {
+              "replace": "apps/kanban-dashboard/src/environments/environment.ts",
+              "with": "apps/kanban-dashboard/src/environments/environment.prod.ts"
+            }
+          ],
+          "outputHashing": "all"
+        },
+        "development": {
+          "buildOptimizer": false,
+          "optimization": false,
+          "vendorChunk": true,
+          "extractLicenses": false,
+          "sourceMap": true,
+          "namedChunks": true
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "serve": {
+      "executor": "@angular-devkit/build-angular:dev-server",
+      "configurations": {
+        "production": {
+          "browserTarget": "kanban-dashboard:build:production"
+        },
+        "development": {
+          "browserTarget": "kanban-dashboard:build:development"
+        }
+      },
+      "defaultConfiguration": "development"
+    },
+    "extract-i18n": {
+      "executor": "@angular-devkit/build-angular:extract-i18n",
+      "options": {
+        "browserTarget": "kanban-dashboard:build"
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "apps/kanban-dashboard/src/**/*.ts",
+          "apps/kanban-dashboard/src/**/*.html"
+        ]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/apps/kanban-dashboard"],
+      "options": {
+        "jestConfig": "apps/kanban-dashboard/jest.config.js",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": []
+}
