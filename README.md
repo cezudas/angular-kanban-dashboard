@@ -1,6 +1,43 @@
 
 
-# Vantage
+# Simple Kanban dashboard inspired by Trello
+
+
+Run
+
+- `git clone https://github.com/cezudas/angular-kanban-dashboard`
+- `cd angular-kanban-dashboard`
+- `npm install`
+
+2. You can simply skip this step unless you want to run this on your own Firebase project.
+
+-> Create a project at https://firebase.google.com/ and grab your web config:
+
+![](https://firebasestorage.googleapis.com/v0/b/firestarter-96e46.appspot.com/o/project-config.PNG?alt=media&token=5eabb205-7ba2-4fc3-905f-e9547055e754)
+
+ Add the config to your Angular environment
+
+#### src/environments/
+
+Update the `environment.prod.ts` and `environment.ts` files. 
+
+```typescript
+export const environment = {
+  production: false,
+  firebase: {
+    apiKey: 'APIKEY',
+    authDomain: 'DEV-APP.firebaseapp.com',
+    databaseURL: 'https://DEV-APP.firebaseio.com',
+    projectId: 'DEV-APP',
+    storageBucket: 'DEV-APP.appspot.com',
+    messagingSenderId: '...',
+    appId: '...',
+  }
+};
+```
+
+
+3. Run `ng serve`
 
 This project was generated using [Nx](https://nx.dev).
 
