@@ -1,0 +1,18 @@
+<div *ngIf="(afAuth.authState | async) === null || (afAuth.authState | async) === undefined">
+    <h1>Login</h1>
+
+    <button mat-raised-button vantageGoogleSignin>
+      <img src="/assets/google-logo.svg" /> Login with Google
+    </button>
+
+    <h5>OR</h5>
+    <vantage-email-login></vantage-email-login>
+  </div>
+
+  <div *ngIf="afAuth.authState | async as user" class="logout">
+    <p>
+      Logged in as <strong>{{ user.email }}</strong>
+    </p>
+
+    <button mat-stroked-button (click)="afAuth.signOut()">Logout</button>
+  </div>
