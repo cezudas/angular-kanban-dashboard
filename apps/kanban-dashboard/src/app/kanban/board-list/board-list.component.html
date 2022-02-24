@@ -1,0 +1,31 @@
+<div class="mobile-disclaimer" *ngIf="isHandset$ | async; else boardList">
+  <p>
+    A mobile friendly version of the Kanban dashboard is not yet available, so it doesn't work on this device right now 😞😞 . <br>
+  </p>
+  <span>
+    Feel free to try the app on a tablet or on desktop PC.
+  </span>
+</div>
+<ng-template #boardList>
+  <div
+    cdkDropList
+    cdkDropListOrientation="horizontal"
+    class="boards"
+    (cdkDropListDropped)="drop($event)"
+  >
+    <vantage-board cdkDrag *ngFor="let board of boards" [board]="board">
+      <mat-icon cdkDragHandle class="handle">drag_indicator</mat-icon>
+    </vantage-board>
+
+    <div class="board-button">
+      <button
+        mat-raised-button
+        color="accent"
+        cdkDragDisabled
+        (click)="openBoardDialog()"
+      >
+        New Board
+      </button>
+    </div>
+  </div>
+</ng-template>

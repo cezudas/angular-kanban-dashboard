@@ -21,7 +21,6 @@
           "apps/kanban-dashboard/src/assets"
         ],
         "styles": [
-          "./node_modules/@angular/material/prebuilt-themes/pink-bluegrey.css",
           "apps/kanban-dashboard/src/styles.scss"
         ],
         "scripts": []

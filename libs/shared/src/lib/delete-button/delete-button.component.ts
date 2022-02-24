@@ -1,15 +1,25 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 
 @Component({
-  selector: 'vantage-delete-buttton',
+  selector: 'vantage-delete-button',
   templateUrl: './delete-button.component.html',
-  styleUrls: ['./delete-button.component.scss']
+  styleUrls: ['./delete-button.component.scss'],
 })
-export class DeleteButtonComponent implements OnInit {
+export class DeleteButtonComponent {
+  canDelete = false;
 
-  constructor() { }
+  @Output() delete = new EventEmitter<boolean>();
 
-  ngOnInit(): void {
+  prepareForDelete() {
+    this.canDelete = true;
   }
 
+  cancel() {
+    this.canDelete = false;
+  }
+
+  deleteBoard() {
+    this.delete.emit(true);
+    this.canDelete = false;
+  }
 }
